@@ -1,0 +1,55 @@
+:root {
+  --bg-color: #fcf6e9;
+  --border-color: #feda91;
+  --txt-color: #0f0f0f;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Component */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+
+  top: 0;
+  position: sticky;
+  z-index: 9999;
+
+  background-color: var(--bg-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.title-text {
+  color: var(--txt-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.vault-link {
+  color: var(--txt-color);
+  font-size: 1.3rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cart-btn {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+}
