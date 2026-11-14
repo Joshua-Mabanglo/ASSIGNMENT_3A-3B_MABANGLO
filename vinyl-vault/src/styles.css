@@ -51,6 +51,8 @@
   font-size: 1.3rem;
   font-weight: 600;
   padding: 0.3rem 1rem;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--border-color);
   border-radius: 8px;
 }
 
@@ -144,4 +146,62 @@
   border: 1.5px solid var(--border-color);
   background-color: var(--bg-color);
   border-radius: 12px;
+}
+
+/* AlbumPage */
+
+.album-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+}
+
+.breadcrumb-link {
+  padding: 0.5rem 0rem;
+}
+
+.album-main {
+  display: flex;
+  border: 1.5px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.album-main-img {
+  width: 75%;
+  height: 400px;
+}
+
+.album-main-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+.album-main-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 1.25rem;
+}
+
+.album-main-desc {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.album-main-stock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.album-main-btn {
+  padding: 0.5rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  background-color: #fcf6e9;
+  font-size: 1.05rem;
 }
