@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const AlbumPage = ({ album }) => {
+const AlbumPage = ({ album, addToCart }) => {
   const { albumId } = useParams();
   const pickedAlbum = album.find((a) => a.id === albumId);
 
@@ -29,7 +29,11 @@ const AlbumPage = ({ album }) => {
             {pickedAlbum.stock > 0
               ? `👍 In stock (${pickedAlbum.stock} units available)`
               : "🚫 Out of stock"}
-            <button type="button" className="album-main-btn">
+            <button
+              type="button"
+              className="album-main-btn"
+              onClick={() => addToCart(pickedAlbum)}
+            >
               Add to cart
             </button>
           </p>

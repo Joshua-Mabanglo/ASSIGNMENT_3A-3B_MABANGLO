@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import AlbumCard from "../components/AlbumCard";
 
-const VaultPage = ({ albums }) => {
+const VaultPage = ({ albums, addToCart }) => {
   const genres = ["All", "Jazz", "Electronic", "Rock", "Classical"];
 
   const [genre, setGenre] = useState("All");
@@ -22,7 +22,7 @@ const VaultPage = ({ albums }) => {
 
       <div className="album-grid">
         {filteredAlbums.map((a) => (
-          <AlbumCard key={a.id} album={a} />
+          <AlbumCard key={a.id} album={a} addToCart={addToCart} />
         ))}
       </div>
 

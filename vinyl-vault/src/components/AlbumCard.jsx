@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AlbumCard = ({ album }) => {
+const AlbumCard = ({ album, addToCart }) => {
   return (
     <div className="album-card">
       <Link className="album-img-link" to={`/album/${album.id}`}>
@@ -15,7 +15,11 @@ const AlbumCard = ({ album }) => {
           </Link>
         </h3>
         <p className="album-price">{`$${album.price}`}</p>
-        <button type="submit" className="album-btn">
+        <button
+          type="button"
+          onClick={() => addToCart(album)}
+          className="album-btn"
+        >
           Add to Cart
         </button>
       </section>

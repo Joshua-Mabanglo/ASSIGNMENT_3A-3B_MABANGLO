@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ openCart, cartTotal }) => {
   return (
     <header className="site-header">
       <div className="site-title">
@@ -13,8 +13,13 @@ const Navbar = () => {
         <Link className="vault-link" to="/">
           Vault
         </Link>
-        <button type="button" className="cart-btn" aira-label="cart">
-          🛒 Cart
+        <button
+          type="button"
+          className="cart-btn"
+          aira-label="cart"
+          onClick={openCart}
+        >
+          🛒 Cart {cartTotal > 0 && <span>{cartTotal}</span>}
         </button>
       </nav>
     </header>
