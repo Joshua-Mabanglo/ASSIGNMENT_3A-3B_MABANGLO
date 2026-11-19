@@ -1,20 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CartTab = ({ cart, cartOpen, cartClose, cartUpdate, removeFromCart }) => {
+const CartTab = ({ cart, cartOpen, cartClose, updateCart, removeFromCart }) => {
   if (!cartOpen) {
     return null;
   }
+
+  const navigate = useNavigate();
 
   const subtotal = cart.reduce(
     (sum, album) => sum + album.amount * album.price,
     0
   );
+
+  const count = cart.reduce((sum, album) => sum + album.amount, 0);
+
+  const toCheckout = () => {
+    cartClose();
+    navigate("/checkout");
+  };
   return (
     <aside className="cart-bg" onClick={cartClose}>
       <div className="cart-tab" onClick={(e) => e.stopPropagation()}>
         <div className="tab-header">
-          <h2 className="tab-title">🛒 Cart ({cart.length})</h2>
+          <h2 className="tab-title">🛒 Cart ({count})</h2>
           <button className="close-btn" onClick={cartClose}>
             <span>&times;</span>
           </button>
@@ -41,7 +50,7 @@ const CartTab = ({ cart, cartOpen, cartClose, cartUpdate, removeFromCart }) => {
                         <button
                           type="button"
                           className="add-item"
-                          onClick={() => cartUpdate(album.id, 1)}
+                          onClick={() => updateCart(album.id, 1)}
                         >
                           <span>+</span>
                         </button>
@@ -49,7 +58,7 @@ const CartTab = ({ cart, cartOpen, cartClose, cartUpdate, removeFromCart }) => {
                         <button
                           type="button"
                           className="subtract-item"
-                          onClick={() => cartUpdate(album.id, -1)}
+                          onClick={() => updateCart(album.id, -1)}
                         >
                           <span>-</span>
                         </button>
@@ -76,7 +85,7 @@ const CartTab = ({ cart, cartOpen, cartClose, cartUpdate, removeFromCart }) => {
               <p className="pay-title">You Pay: </p>
               <p className="pay-value">${subtotal.toFixed(2)}</p>
             </div>
-            <button className="checkout-btn" type="button">
+            <button className="checkout-btn" type="button" onClick={toCheckout}>
               <span>Proceed to Checkout</span>
             </button>
           </div>

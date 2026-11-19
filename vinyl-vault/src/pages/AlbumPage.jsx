@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const AlbumPage = ({ album, addToCart }) => {
   const { albumId } = useParams();
   const pickedAlbum = album.find((a) => a.id === albumId);
+  const [amount, setAmount] = useState(1);
 
   return (
     <section className="album-page">
@@ -29,14 +30,32 @@ const AlbumPage = ({ album, addToCart }) => {
             {pickedAlbum.stock > 0
               ? `👍 In stock (${pickedAlbum.stock} units available)`
               : "🚫 Out of stock"}
+          </p>
+
+          <div className="album-main-select">
+            <div className="select-group">
+              <label htmlFor="amount" className="select-amount">
+                Quantity:
+              </label>
+              <input
+                type="number"
+                name="amount"
+                id="amount"
+                min="1"
+                max={pickedAlbum.stock}
+                placeholder="1"
+                step="1"
+                onChange={(e) => setAmount(parseInt(e.target.value))}
+              />
+            </div>
             <button
               type="button"
               className="album-main-btn"
-              onClick={() => addToCart(pickedAlbum)}
+              onClick={() => addToCart(pickedAlbum, amount)}
             >
               Add to cart
             </button>
-          </p>
+          </div>
         </div>
       </div>
     </section>

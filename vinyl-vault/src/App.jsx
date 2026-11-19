@@ -6,6 +6,7 @@ import CartTab from "./components/CartTab";
 import { Routes, Route } from "react-router-dom";
 
 import { ALBUMS } from "./data/albums";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -31,7 +32,7 @@ const App = () => {
         .map((a) => {
           if (a.id === albumId) {
             const updateAmt = a.amount + update;
-            updateAmt > 0 ? { ...a, amount: updateAmt } : null;
+            return updateAmt > 0 ? { ...a, amount: updateAmt } : null;
           }
           return a;
         })
@@ -62,6 +63,10 @@ const App = () => {
             path="/album/:albumId"
             element={<AlbumPage album={ALBUMS} addToCart={addToCart} />}
           />
+          <Route
+            path="/checkout"
+            element={<CheckoutPage cart={cart} clearCart={clearCart} />}
+          ></Route>
         </Routes>
       </div>
       <CartTab
@@ -71,7 +76,7 @@ const App = () => {
           console.log("Clicked");
           setCartOpen(false);
         }}
-        cartUpdate={updateCart}
+        updateCart={updateCart}
         removeFromCart={removeFromCart}
       />
     </div>

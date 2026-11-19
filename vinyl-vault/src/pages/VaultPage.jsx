@@ -20,24 +20,20 @@ const VaultPage = ({ albums, addToCart }) => {
         <p className="vault-subtitle">Timeless music for every taste.</p>
       </div>
 
+      {/* Why not working? */}
+      <div className="genre-filters">
+        {genres.map((g) => (
+          <button className="genre-btn" onClick={() => setGenre(g)}>
+            {g}
+          </button>
+        ))}
+      </div>
+
       <div className="album-grid">
         {filteredAlbums.map((a) => (
           <AlbumCard key={a.id} album={a} addToCart={addToCart} />
         ))}
       </div>
-
-      {/* Why not working? */}
-      {/* <div className="genre-filters">
-        {genres.map((g) => {
-          <button
-            type="button"
-            className={`filter ${genre === g ? "-select" : ""}`}
-            onClick={() => setGenre(g)}
-          >
-            {g}
-          </button>;
-        })}
-      </div> */}
     </div>
   );
 };
