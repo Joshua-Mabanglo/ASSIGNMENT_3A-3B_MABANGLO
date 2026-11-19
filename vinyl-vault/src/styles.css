@@ -550,3 +550,30 @@
   padding: 1rem;
   border-radius: 10px;
 }
+
+.nothing-title {
+  font-size: 2.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.nothing-msg {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .album-page {
+    padding: 2rem 4rem;
+  }
+  .album-main {
+    flex-direction: column;
+  }
+
+  .album-main-img {
+    width: 100%;
+  }
+}

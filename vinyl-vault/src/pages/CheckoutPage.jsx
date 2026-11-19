@@ -42,6 +42,17 @@ const CheckoutPage = ({ cart, clearCart }) => {
     );
   }
 
+  if (cart.length === 0) {
+    return (
+      <div className="nothing-msg">
+        <h3 className="nothing-title">There is nothing in your cart.</h3>
+        <Link to="/" className="vault-btn">
+          Return to Vault
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="checkout-page">
       <h1 className="checkout-title">Confirm Order and Checkout</h1>
